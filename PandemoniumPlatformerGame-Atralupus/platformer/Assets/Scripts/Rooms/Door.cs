@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -15,10 +13,14 @@ public class Door : MonoBehaviour
             if (other.transform.position.x < transform.position.x)
             {
                 cam.MoveToNewRoom(nextRoom);
+                nextRoom.GetComponent<Room>().ActivateRoom(true);
+                prevRoom.GetComponent<Room>().ActivateRoom(false);
             }
             else
             {
                 cam.MoveToNewRoom(prevRoom);
+                prevRoom.GetComponent<Room>().ActivateRoom(true);
+                nextRoom.GetComponent<Room>().ActivateRoom(false);
             }
         }
     }
